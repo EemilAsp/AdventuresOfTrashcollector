@@ -338,6 +338,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2443924290056145176, guid: 8240d8c38d1dfa64a9c24fc04f27540f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8240d8c38d1dfa64a9c24fc04f27540f, type: 3}
+--- !u!95 &65979903 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2443924290056145157, guid: 8240d8c38d1dfa64a9c24fc04f27540f, type: 3}
+  m_PrefabInstance: {fileID: 65979902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &101226532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1692d0ffc1433e44c9506c0dd83963fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   buttonClickSound: {fileID: 284777707}
 --- !u!82 &284777707
 AudioSource:
@@ -2055,6 +2061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportEffect: {fileID: 642070132}
   CollectorScript: {fileID: 724825620}
+  playerName: 
 --- !u!50 &642070135
 Rigidbody2D:
   serializedVersion: 4
@@ -4503,6 +4510,7 @@ MonoBehaviour:
   damageSound: {fileID: 1139540431}
   dyingSound: {fileID: 1139540436}
   teleport: {fileID: 642070131}
+  npcanim: {fileID: 65979903}
 --- !u!82 &1139540431
 AudioSource:
   m_ObjectHideFlags: 0

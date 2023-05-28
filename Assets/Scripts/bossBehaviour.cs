@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.IO.Pipes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,11 @@ public class bossBehaviour : MonoBehaviour
     public AudioSource damageSound;
     public AudioSource dyingSound;
     public GameObject teleport;
+    public Animator npcanim;
+
+    void onStart(){
+        npcanim = GetComponent<Animator>();
+    }
     
     // Update is called once per frame
     void Update()
@@ -48,12 +55,18 @@ public class bossBehaviour : MonoBehaviour
 
     public void DamageSound(){
         damageSound.Play();
+        npcanim.SetTrigger("DamageTaken");
     }
 
     public void destroyFinalBoss(){
         dyingSound.Play();
+        npcanim.SetTrigger("BossDead");
         teleport.SetActive(true);
         Destroy(gameObject);
+    }
+
+    public void resetTrigger(){
+        npcanim.ResetTrigger("DamageTaken");
     }
 
     
