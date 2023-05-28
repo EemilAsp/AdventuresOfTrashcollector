@@ -9,11 +9,13 @@ public class CollectorScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public static int itemsCollected;
+    public string playerName;
     [SerializeField] public Text trashCount;
     [SerializeField] private AudioSource collectSound;
 
     void Start(){
-        itemsCollected = PlayerPrefs.GetInt("CurrentPlayerScore");
+        playerName = PlayerPrefs.GetString("CurrentPlayerName");
+        itemsCollected = PlayerPrefs.GetInt("CurrentSessionScore");
         trashCount.text = "Trash collected: "+ itemsCollected;
     }
 
@@ -34,6 +36,6 @@ public class CollectorScript : MonoBehaviour
     }
 
     public void savePlayerScore(){
-        PlayerPrefs.SetInt("CurrentPlayerScore", itemsCollected);
+        PlayerPrefs.SetInt("CurrentSessionScore", itemsCollected);
     }
 }

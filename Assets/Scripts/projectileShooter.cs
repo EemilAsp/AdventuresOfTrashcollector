@@ -5,21 +5,27 @@ using UnityEngine;
 public class projectileShooter : MonoBehaviour
 {
    public GameObject projectilePrefab;
+   public GameObject TrashBagPrefab;
     public Transform projectileSpawnPoint; 
     public float shootingInterval = 5f;
+    public float TrashBagInterval = 15f;
     public GameObject playerCharacter; 
     private float timer = 0f;
-    public float projectileSpeed = 10f;
+    private float timer2 = 0f;
 
     private void Update()
     {
         timer += Time.deltaTime; // Increment the timer
-
+        timer2 += Time.deltaTime;
         // Check if it's time to shoot
         if (timer >= shootingInterval)
         {
             ShootProjectile();
             timer = 0f; // Reset the timer
+        }else if(timer2 >= TrashBagInterval)
+        {
+            ShootTrashBag();
+            timer2 = 0f;
         }
     }
 
@@ -29,9 +35,19 @@ public class projectileShooter : MonoBehaviour
         direction.Normalize();
 
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        // Code to customize the projectile (e.g., set velocity, add force, etc.) goes here
         Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
-        projectileRigidbody.velocity = direction * projectileSpeed;
-        projectileRigidbody.AddForce(direction * 10f, ForceMode2D.Impulse);
+        projectileRigidbody.velocity = direction * 10f;
+        projectileRigidbody.AddForce(direction * 14f, ForceMode2D.Impulse);
+    }
+
+    private void ShootTrashBag()
+    {
+        GameObject TrashBagProjectile = Instantiate(TrashBagPrefab, transform.position, Quaternion.identity);
+        float randomAngle = Random.Range(0f, Mathf.PI * 2);
+        Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
+        randomDirection.Normalize();
+        Rigidbody2D TrashprojectileRigidbody = TrashBagProjectile.GetComponent<Rigidbody2D>();
+        TrashprojectileRigidbody.velocity = randomDirection * 10f;
+        TrashprojectileRigidbody.AddForce(randomDirection * 14f, ForceMode2D.Impulse);
     }
 }

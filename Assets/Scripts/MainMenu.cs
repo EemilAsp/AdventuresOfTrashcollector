@@ -60,6 +60,16 @@ public class MainMenu : MonoBehaviour
         buttonClickSound.Play();
         SceneManager.LoadScene("Level_2");
     }
+
+    public void sewageLevelButton(){
+        buttonClickSound.Play();
+        SceneManager.LoadScene("Level_3");
+    }
+
+    public void finalBossLevelButton(){
+        buttonClickSound.Play();
+        SceneManager.LoadScene("Final_Boss");
+    }
     
 
 

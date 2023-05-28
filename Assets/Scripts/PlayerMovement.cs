@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("trampoline"))
         {
             trampolineSound.Play();
-            player.velocity = new Vector3(player.velocity.x, 50f);
+            player.velocity = new Vector3(player.velocity.x, 40f);
         }
         
     }

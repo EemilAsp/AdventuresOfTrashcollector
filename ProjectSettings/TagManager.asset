@@ -16,6 +16,7 @@ TagManager:
   - scoreText
   - energydrink
   - Test
+  - Waste_bag
   layers:
   - Default
   - TransparentFX

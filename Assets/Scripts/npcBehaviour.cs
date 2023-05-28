@@ -16,7 +16,7 @@ public class npcBehaviour : MonoBehaviour
         if(destination == 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, points[0].position, moveSpeed * Time.deltaTime);
-            if(Vector2.Distance(transform.position, points[0].position) < 0.2f)
+            if(Vector2.Distance(transform.position, points[0].position) < 0.5f)
             {
                 flipAnim();
                 destination = 1;
@@ -25,7 +25,7 @@ public class npcBehaviour : MonoBehaviour
         if(destination == 1)
         {
             transform.position = Vector2.MoveTowards(transform.position, points[1].position, moveSpeed * Time.deltaTime);
-            if(Vector2.Distance(transform.position, points[1].position) < 0.2f)
+            if(Vector2.Distance(transform.position, points[1].position) < 0.5f)
             {
                 flipAnim();
                 destination = 0;
@@ -37,6 +37,10 @@ public class npcBehaviour : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
+    }
+
+    public void moreSpeed(){
+        moveSpeed *= 1.25f;
     }
 
     

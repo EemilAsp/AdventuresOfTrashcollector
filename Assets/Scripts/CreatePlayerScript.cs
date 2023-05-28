@@ -29,6 +29,7 @@ public class CreatePlayerScript : MonoBehaviour
             ShowErrorScreen();
         }else{
             PlayerPrefs.SetString("CurrentPlayerName", userName);
+            PlayerPrefs.SetInt("CurrentSessionScore", 0);
             SceneManager.LoadScene("MainMenu");
         }
     }
