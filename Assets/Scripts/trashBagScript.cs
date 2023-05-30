@@ -11,6 +11,7 @@ public class trashBagScript : MonoBehaviour
     public GameObject WasteBag;
     public float scaleMultiplier = 0.25f;
     private bossBehaviour npcScripts;
+    //test
 
     private void Start()
     {

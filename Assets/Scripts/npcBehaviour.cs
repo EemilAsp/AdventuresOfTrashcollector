@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class npcBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public float moveSpeed = 1f;
     public Transform[] points;
     public int destination;
-    
-    // Update is called once per frame
     void Update()
     {
         if(destination == 0)

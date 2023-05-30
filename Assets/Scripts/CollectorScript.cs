@@ -7,17 +7,26 @@ using UnityEngine.UI;
 
 public class CollectorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public static int itemsCollected;
+    public static int trashCollected;
     public string playerName;
     [SerializeField] public Text trashCount;
     [SerializeField] private AudioSource collectSound;
 
     void Start(){
-        playerName = PlayerPrefs.GetString("CurrentPlayerName");
-        itemsCollected = PlayerPrefs.GetInt("CurrentSessionScore");
-        trashCount.text = "Trash collected: "+ itemsCollected;
+        playerName = PlayerPrefs.GetString("CurrentPlayerName"); // keep the score between levels
+        trashCollected = PlayerPrefs.GetInt("CurrentSessionScore"); // keep the score between levels
+        trashCount.text = "Trash collected: "+ trashCollected; // set text to ui
     }
+
+     public int getPlayerScore(){
+        savePlayerScore();
+        return(trashCollected);
+    }
+
+    public void savePlayerScore(){
+        PlayerPrefs.SetInt("CurrentSessionScore", trashCollected);
+    }
+}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,17 +34,9 @@ public class CollectorScript : MonoBehaviour
         {
             collectSound.Play();
             Destroy(collision.gameObject);
-            itemsCollected += 1;
-            trashCount.text = "Trash collected: "+ itemsCollected;
+            trashCollected += 1;
+            trashCount.text = "Trash collected: "+ trashCollected;
         }
     }
 
-    public int getPlayerScore(){
-        savePlayerScore();
-        return(itemsCollected);
-    }
-
-    public void savePlayerScore(){
-        PlayerPrefs.SetInt("CurrentSessionScore", itemsCollected);
-    }
-}
+   

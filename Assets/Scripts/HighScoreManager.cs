@@ -4,16 +4,14 @@ using UnityEngine.UI;
 
 public class HighScoreManager : MonoBehaviour
 {
-    public int maxScores = 10;
+    public int maxScores = 7;
     public Text highScoresText;
-
     [SerializeField] private GameObject content;
     [SerializeField] private GameObject highScoreEntryPrefab;
-
-    private List<HighScoreEntry> highScores = new List<HighScoreEntry>();
+    private List<HighScore> highScores = new List<HighScore>();
 
     [System.Serializable]
-    public class HighScoreEntry
+    public class HighScore //Data structure for the higscores
     {
         public string playerName;
         public int score;
@@ -21,24 +19,22 @@ public class HighScoreManager : MonoBehaviour
 
     void Start()
     {
-        LoadHighScores();
-        UpdateHighScoresText();
+        LoadHighScores(); //load the highscores from prefs
+        UpdateHighScoresText(); //update the UI based on load
     }
 
-    void LoadHighScores()
+    void LoadHighScores() // load from prefs
     {
-        // Load high scores from PlayerPrefs or a file
         for (int i = 0; i < maxScores; i++)
         {
             string playerName = PlayerPrefs.GetString("PlayerName" + i);
             int score = PlayerPrefs.GetInt("PlayerScore" + i);
-            highScores.Add(new HighScoreEntry { playerName = playerName, score = score });
+            highScores.Add(new HighScore { playerName = playerName, score = score });
         }
     }
 
-    void SaveHighScores()
+    void SaveHighScores() // save scores to prefs
     {
-        // Save high scores to PlayerPrefs or a file
         for (int i = 0; i < highScores.Count; i++)
         {
             PlayerPrefs.SetString("PlayerName" + i, highScores[i].playerName);
@@ -46,48 +42,45 @@ public class HighScoreManager : MonoBehaviour
         }
     }
 
-    void UpdateHighScoresText()
+    void UpdateHighScoresText() //update the UI to contain 7 best scores
     {
-        // Clear existing content
         foreach (Transform child in content.transform)
         {
             Destroy(child.gameObject);
         }
 
-        GameObject HeaderObj = Instantiate(highScoreEntryPrefab, content.transform);
+        GameObject HeaderObj = Instantiate(highScoreEntryPrefab, content.transform); //crete header prefab
         Text headerText = HeaderObj.GetComponent<Text>();
-        headerText.text = "Player name | Player score";
-
-        // Create new content
+        headerText.text = "Player name | Player score"; // header row
         if(highScores != null){
-        for (int i = 0; i < highScores.Count; i++)
+        for (int i = 0; i < highScores.Count; i++) // show only 7 scores
         {
-            if (!string.IsNullOrEmpty(highScores[i].playerName) && highScores[i].score != 0)
+            if (!string.IsNullOrEmpty(highScores[i].playerName) && highScores[i].score != 0) //if theres scores show them else show empty
             {
                 GameObject entryObj = Instantiate(highScoreEntryPrefab, content.transform);
                 Text entryText = entryObj.GetComponent<Text>();
-                entryText.text = highScores[i].playerName + ": " + highScores[i].score;
+                entryText.text = highScores[i].playerName + " : " + highScores[i].score;
+            }else{
+                // nothing found
             }
         }
         }
     }
 
-    public void AddHighScore(string playerName, int score)
+    public void AddHighScore(string playerName, int score) // add new score to prefs
     {
-        highScores.Add(new HighScoreEntry { playerName = playerName, score = score });
-        highScores.Sort((a, b) => b.score.CompareTo(a.score)); // Sort in descending order
+        highScores.Add(new HighScore { playerName = playerName, score = score });
+        highScores.Sort((a, b) => b.score.CompareTo(a.score));
 
-        if (highScores.Count > maxScores)
+        if (highScores.Count > 7)
         {
-            highScores.RemoveAt(maxScores); // Remove the lowest score
+            highScores.RemoveAt(7);
         }
-
         SaveHighScores();
         UpdateHighScoresText();
     }
 
-
-    public List<HighScoreEntry> GetHighScores()
+    public List<HighScore> GetHighScores() //return highscores to diff scripts
     {
     return highScores;
     }

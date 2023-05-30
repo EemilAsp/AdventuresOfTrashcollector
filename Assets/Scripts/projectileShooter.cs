@@ -6,7 +6,7 @@ public class projectileShooter : MonoBehaviour
 {
    public GameObject projectilePrefab;
    public GameObject TrashBagPrefab;
-    public Transform projectileSpawnPoint; 
+    public Transform toxicWasteSpawnPoint; 
     public float shootingInterval = 5f;
     public float TrashBagInterval = 15f;
     public GameObject playerCharacter; 
@@ -22,12 +22,12 @@ public class projectileShooter : MonoBehaviour
     private void Update()
     {
         if(alive){
-        timer += Time.deltaTime; // Increment the timer
+        timer += Time.deltaTime; // Increment the timers
         timer2 += Time.deltaTime;
         // Check if it's time to shoot
         if (timer >= shootingInterval)
         {
-            ShootProjectile();
+            ShootToxicWaste();
             timer = 0f; // Reset the timer
         }else if(timer2 >= TrashBagInterval)
         {
@@ -36,15 +36,14 @@ public class projectileShooter : MonoBehaviour
         }}
     }
 
-    private void ShootProjectile()
+    private void ShootToxicWaste()
     {
-        Vector2 direction = playerCharacter.transform.position - projectileSpawnPoint.position;
+        Vector2 direction = playerCharacter.transform.position - toxicWasteSpawnPoint.position;
         direction.Normalize();
-
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
-        projectileRigidbody.velocity = direction * 10f;
-        projectileRigidbody.AddForce(direction * 14f, ForceMode2D.Impulse);
+        GameObject toxicWasteProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        Rigidbody2D toxicwasteRigidbody = toxicWasteProjectile.GetComponent<Rigidbody2D>();
+        toxicwasteRigidbody.velocity = direction * 10f;
+        toxicwasteRigidbody.AddForce(direction * 14f, ForceMode2D.Impulse);
     }
 
     private void ShootTrashBag()
