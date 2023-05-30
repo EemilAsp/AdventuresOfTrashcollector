@@ -1579,10 +1579,10 @@ RectTransform:
   m_Father: {fileID: 417050165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 892, y: 463}
-  m_SizeDelta: {x: -1760, y: -1050}
+  m_AnchoredPosition: {x: -68, y: -77}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470290343
 MonoBehaviour:
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   TrashBagPrefab: {fileID: 7616483598003516859, guid: 16f034e5f169bed44bbd4c4476c59f46, type: 3}
   projectileSpawnPoint: {fileID: 1139540423}
   shootingInterval: 5
-  TrashBagInterval: 15
+  TrashBagInterval: 2
   playerCharacter: {fileID: 724825613}
 --- !u!114 &1139540430
 MonoBehaviour:
@@ -4510,6 +4510,7 @@ MonoBehaviour:
   damageSound: {fileID: 1139540431}
   dyingSound: {fileID: 1139540436}
   teleport: {fileID: 642070131}
+  projectileShooter: {fileID: 1139540424}
   npcanim: {fileID: 65979903}
 --- !u!82 &1139540431
 AudioSource:
@@ -48361,10 +48362,10 @@ RectTransform:
   m_Father: {fileID: 417050165}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -356, y: 473.05243}
-  m_SizeDelta: {x: -991.8674, y: -998.433}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 604, y: -66.94757}
+  m_SizeDelta: {x: 928.1326, y: 81.56702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894424313
 MonoBehaviour:

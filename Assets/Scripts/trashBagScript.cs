@@ -30,7 +30,7 @@ public class trashBagScript : MonoBehaviour
                 npcScripts.DamageSound();
                 if (npcEnemy.transform.localScale.x < 5f && npcEnemy.transform.localScale.y < 5f)
                     {
-                        npcScripts.destroyFinalBoss();
+                        npcScripts.destroyFinalBoss
                     }
             }
             Destroy(WasteBag);  

@@ -12,9 +12,16 @@ public class projectileShooter : MonoBehaviour
     public GameObject playerCharacter; 
     private float timer = 0f;
     private float timer2 = 0f;
+    private bool alive;
+
+    void Start()
+    {
+        alive = true;
+    } 
 
     private void Update()
     {
+        if(alive){
         timer += Time.deltaTime; // Increment the timer
         timer2 += Time.deltaTime;
         // Check if it's time to shoot
@@ -26,7 +33,7 @@ public class projectileShooter : MonoBehaviour
         {
             ShootTrashBag();
             timer2 = 0f;
-        }
+        }}
     }
 
     private void ShootProjectile()
@@ -49,5 +56,10 @@ public class projectileShooter : MonoBehaviour
         Rigidbody2D TrashprojectileRigidbody = TrashBagProjectile.GetComponent<Rigidbody2D>();
         TrashprojectileRigidbody.velocity = randomDirection * 10f;
         TrashprojectileRigidbody.AddForce(randomDirection * 14f, ForceMode2D.Impulse);
+    }
+
+
+    public void setAliveFalse(){
+        alive = false;
     }
 }

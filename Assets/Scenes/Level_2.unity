@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1692d0ffc1433e44c9506c0dd83963fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   buttonClickSound: {fileID: 284777707}
 --- !u!82 &284777707
 AudioSource:
@@ -1481,10 +1482,10 @@ RectTransform:
   m_Father: {fileID: 417050165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 892, y: 463}
-  m_SizeDelta: {x: -1760, y: -1050}
+  m_AnchoredPosition: {x: -68, y: -77}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470290343
 MonoBehaviour:
@@ -1896,6 +1897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportEffect: {fileID: 642070132}
   CollectorScript: {fileID: 724825620}
+  playerName: 
 --- !u!50 &642070135
 Rigidbody2D:
   serializedVersion: 4
@@ -2237,6 +2239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3dab9317876d74fa972c48193b6053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   trashCount: {fileID: 1894424313}
   collectSound: {fileID: 724825624}
 --- !u!114 &724825621
@@ -58428,10 +58431,10 @@ RectTransform:
   m_Father: {fileID: 417050165}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -356, y: 473.05243}
-  m_SizeDelta: {x: -991.8674, y: -998.433}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 604, y: -66.94757}
+  m_SizeDelta: {x: 928.1326, y: 81.56702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894424313
 MonoBehaviour:
