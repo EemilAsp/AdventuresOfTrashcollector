@@ -28,10 +28,6 @@ public class trashBagScript : MonoBehaviour
                 npcEnemy.transform.localScale *= scaleMultiplier;
                 npcScripts.moreSpeed();
                 npcScripts.DamageSound();
-                if (npcEnemy.transform.localScale.x < 5f && npcEnemy.transform.localScale.y < 5f)
-                    {
-                        npcScripts.destroyFinalBoss
-                    }
             }
             Destroy(WasteBag);  
         }
